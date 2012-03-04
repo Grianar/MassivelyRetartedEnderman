@@ -1,0 +1,8 @@
+author: Grianar
+database: false
+description: A fun plugin that makes endermen blow up whenever they are hit by you.
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: me.grianar.plugins.massivelyretartedenderman.Massivelyretartedenderman
+name: MassivelyRetartedEnderman
+startup: postworld
+version: '1.0'
