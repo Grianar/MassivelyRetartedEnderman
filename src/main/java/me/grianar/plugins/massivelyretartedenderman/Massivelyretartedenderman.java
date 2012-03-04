@@ -1,20 +1,18 @@
 package me.grianar.plugins.massivelyretartedenderman;
 
 import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
-public class Massivelyretartedenderman extends JavaPlugin implements Listener {
+public class Massivelyretartedenderman extends JavaPlugin {
     public void onDisable() {
 
     }
 
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this);
-
+        PluginManager pm = Bukkit.getServer().getPluginManager();
+        MREListener listener = new MREListener();
+        pm.registerEvents(listener, this);
     }
 }
 

@@ -18,7 +18,7 @@ public class MREListener implements Listener {
             Entity enderman = event.getEntity();
             Location loc = enderman.getLocation();
             Random r = new Random();
-            event.getEntity().getWorld().createExplosion(loc, 12F);
+            event.getEntity().getWorld().createExplosion(loc, 4F);
         }
     }
 }
