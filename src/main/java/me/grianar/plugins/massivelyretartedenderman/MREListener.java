@@ -7,8 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetEvent;
 
-import java.util.Random;
-
 public class MREListener implements Listener {
     
     @EventHandler
@@ -17,7 +15,6 @@ public class MREListener implements Listener {
         if (e == EntityType.ENDERMAN) {
             Entity enderman = event.getEntity();
             Location loc = enderman.getLocation();
-            Random r = new Random();
             event.getEntity().getWorld().createExplosion(loc, 4F);
         }
     }
