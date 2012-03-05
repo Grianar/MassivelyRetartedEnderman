@@ -1,38 +1,30 @@
 package me.grianar.plugins.massivelyretartedenderman;
 
 import org.bukkit.Location;
-import org.bukkit.block.BlockState;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class MREListener implements Listener {
-    
+
+
     @EventHandler
     public void onEntityTarget(EntityTargetEvent event) {
         EntityType e = event.getEntity().getType();
         if (e == EntityType.ENDERMAN) {
             Entity enderman = event.getEntity();
             Location loc = enderman.getLocation();
-            BlockState[][][] nearbyBlocks = new BlockState[16][16][16];
-            for (int x = 0; x < 16; x++) {
-                for (int y = 0; y < 16; y++) {
-                    for (int z = 0; z < 16; z++) {
-                        nearbyBlocks[x][y][z] = loc.getBlock().getRelative(x - 8, y - 8, z - 8).getState();
-                    }
-                }
-            }
-            event.getEntity().getWorld().createExplosion(loc, 4F);
+            Entity ent = event.getEntity();
+            ent.getWorld().createExplosion(loc, 0f);
+            ent.remove();
+            ent.getWorld().dropItemNaturally(ent.getLocation(), new ItemStack(Material.ENDER_PEARL, 1));
 
-            for (int x = 0; x < 16; x++) {
-                for (int y = 0; y < 16; y++) {
-                    for (int z = 0; z < 16; z++) {
-                        nearbyBlocks[x][y][z].update(true);
-                    }
-                }
-            }
         }
     }
 }
+
